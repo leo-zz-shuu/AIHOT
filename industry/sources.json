@@ -1,368 +1,272 @@
 {
-  "$comment": "示范信源：首次启动时导入（scripts/seed.ts），已存在的不会被覆盖。之后在后台“信源”里新建、修改和暂停。字段说明见 docs/customize.md。",
+  "$comment": "示范信源：首次启动时导入。覆盖官方 RSS、项目网页列表、GitHub JSON Releases、X 技术账号；公众号需运营者提供真实 ghid 后再加入。",
   "sources": [
     {
-      "id": "rss-openai-news",
-      "name": "OpenAI News",
+      "id": "rss-nvidia-developer",
+      "name": "NVIDIA Developer Blog",
       "kind": "rss",
-      "config": {
-        "feedUrl": "https://openai.com/news/rss.xml",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "owner_entity_id": "openai",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-google-deepmind",
-      "name": "Google DeepMind",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://deepmind.google/blog/rss.xml",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "owner_entity_id": "google",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-google-research",
-      "name": "Google Research",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://research.google/blog/rss/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "owner_entity_id": "google",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方",
-        "研究"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-hugging-face",
-      "name": "Hugging Face Blog",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://huggingface.co/blog/feed.xml",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "owner_entity_id": "hugging-face",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方",
-        "开源"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-microsoft-research",
-      "name": "Microsoft Research",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://www.microsoft.com/en-us/research/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "owner_entity_id": "microsoft",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方",
-        "研究"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-nvidia-blog",
-      "name": "NVIDIA Blog",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://blogs.nvidia.com/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
+      "config": { "feedUrl": "https://developer.nvidia.com/blog/feed/", "_aihot": { "initialBackfillLimit": 12 } },
       "tier": "T1",
       "owner_entity_id": "nvidia",
       "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方"
-      ],
+      "interval_minutes": 60,
+      "tags": ["官方", "硬件", "编译器"],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-aws-ml",
-      "name": "AWS Machine Learning Blog",
+      "id": "rss-llvm-blog",
+      "name": "LLVM Blog",
       "kind": "rss",
-      "config": {
-        "feedUrl": "https://aws.amazon.com/blogs/machine-learning/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
+      "config": { "feedUrl": "https://blog.llvm.org/feeds/posts/default", "_aihot": { "initialBackfillLimit": 12 } },
       "tier": "T1",
-      "owner_entity_id": null,
+      "owner_entity_id": "llvm",
       "participation_mode": "editorial",
       "interval_minutes": 120,
-      "tags": [
-        "官方",
-        "教程"
-      ],
+      "tags": ["官方", "编译器"],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-github-ai",
-      "name": "GitHub Blog · AI & ML",
+      "id": "rss-mlir-blog",
+      "name": "MLIR Blog",
       "kind": "rss",
-      "config": {
-        "feedUrl": "https://github.blog/ai-and-ml/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
+      "config": { "feedUrl": "https://mlir.llvm.org/feed.xml", "_aihot": { "initialBackfillLimit": 12 } },
       "tier": "T1",
-      "owner_entity_id": null,
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-mistral",
-      "name": "Mistral AI",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://mistral.ai/news/rss",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "owner_entity_id": null,
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-bair",
-      "name": "Berkeley AI Research",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://bair.berkeley.edu/blog/feed.xml",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "owner_entity_id": null,
+      "owner_entity_id": "mlir",
       "participation_mode": "editorial",
       "interval_minutes": 180,
-      "tags": [
-        "研究"
-      ],
+      "tags": ["官方", "编译器"],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-the-verge-ai",
-      "name": "The Verge · AI",
+      "id": "rss-pytorch-blog",
+      "name": "PyTorch Blog",
       "kind": "rss",
-      "config": {
-        "feedUrl": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T2",
-      "owner_entity_id": null,
+      "config": { "feedUrl": "https://pytorch.org/blog/feed.xml", "_aihot": { "initialBackfillLimit": 12 } },
+      "tier": "T1",
+      "owner_entity_id": "pytorch",
       "participation_mode": "editorial",
-      "interval_minutes": 60,
-      "tags": [
-        "媒体"
-      ],
+      "interval_minutes": 90,
+      "tags": ["官方", "运行时", "性能"],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-techcrunch-ai",
-      "name": "TechCrunch · AI",
+      "id": "rss-tvm-blog",
+      "name": "Apache TVM Blog",
       "kind": "rss",
-      "config": {
-        "feedUrl": "https://techcrunch.com/category/artificial-intelligence/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T2",
-      "owner_entity_id": null,
+      "config": { "feedUrl": "https://tvm.apache.org/feed.xml", "_aihot": { "initialBackfillLimit": 12 } },
+      "tier": "T1",
+      "owner_entity_id": "apache-tvm",
       "participation_mode": "editorial",
-      "interval_minutes": 60,
-      "tags": [
-        "媒体"
-      ],
+      "interval_minutes": 180,
+      "tags": ["开源", "编译器"],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-ars-technica-ai",
-      "name": "Ars Technica · AI",
+      "id": "rss-openxla-blog",
+      "name": "OpenXLA Blog",
       "kind": "rss",
-      "config": {
-        "feedUrl": "https://arstechnica.com/ai/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T2",
-      "owner_entity_id": null,
+      "config": { "feedUrl": "https://openxla.org/blog/feed.xml", "_aihot": { "initialBackfillLimit": 12 } },
+      "tier": "T1",
+      "owner_entity_id": "openxla",
       "participation_mode": "editorial",
-      "interval_minutes": 60,
-      "tags": [
-        "媒体"
-      ],
+      "interval_minutes": 180,
+      "tags": ["官方", "编译器", "运行时"],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-mit-tech-review-ai",
-      "name": "MIT Technology Review · AI",
+      "id": "rss-aws-ml-infra",
+      "name": "AWS Machine Learning Infrastructure Blog",
       "kind": "rss",
-      "config": {
-        "feedUrl": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T2",
+      "config": { "feedUrl": "https://aws.amazon.com/blogs/machine-learning/feed/", "_aihot": { "initialBackfillLimit": 10 } },
+      "tier": "T1",
       "owner_entity_id": null,
       "participation_mode": "editorial",
       "interval_minutes": 120,
-      "tags": [
-        "媒体"
-      ],
+      "tags": ["官方", "系统", "部署"],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-the-decoder",
-      "name": "The Decoder",
+      "id": "rss-meta-engineering-ai",
+      "name": "Meta Engineering · AI Infrastructure",
       "kind": "rss",
-      "config": {
-        "feedUrl": "https://the-decoder.com/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T2",
-      "owner_entity_id": null,
+      "config": { "feedUrl": "https://engineering.fb.com/feed/", "_aihot": { "initialBackfillLimit": 10 } },
+      "tier": "T1",
+      "owner_entity_id": "meta",
       "participation_mode": "editorial",
-      "interval_minutes": 60,
-      "tags": [
-        "媒体"
-      ],
+      "interval_minutes": 180,
+      "tags": ["官方", "系统"],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-simon-willison",
-      "name": "Simon Willison",
+      "id": "rss-latent-space-infra",
+      "name": "Latent Space · AI Engineering",
       "kind": "rss",
-      "config": {
-        "feedUrl": "https://simonwillison.net/atom/everything/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T2",
-      "owner_entity_id": null,
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "个人"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-import-ai",
-      "name": "Import AI",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://importai.substack.com/feed",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
+      "config": { "feedUrl": "https://www.latent.space/feed", "_aihot": { "initialBackfillLimit": 10 } },
       "tier": "T2",
       "owner_entity_id": null,
       "participation_mode": "editorial",
       "interval_minutes": 180,
-      "tags": [
-        "个人",
-        "周刊"
-      ],
+      "tags": ["媒体", "工程"],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-latent-space",
-      "name": "Latent Space",
+      "id": "rss-simon-willison-infra",
+      "name": "Simon Willison · Engineering Notes",
       "kind": "rss",
-      "config": {
-        "feedUrl": "https://www.latent.space/feed",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
+      "config": { "feedUrl": "https://simonwillison.net/atom/everything/", "_aihot": { "initialBackfillLimit": 10 } },
       "tier": "T2",
       "owner_entity_id": null,
       "participation_mode": "editorial",
       "interval_minutes": 180,
-      "tags": [
-        "个人"
-      ],
+      "tags": ["个人", "技术博客"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "json-github-llvm-releases",
+      "name": "GitHub · llvm/llvm-project Releases",
+      "kind": "json_list",
+      "config": {
+        "url": "https://api.github.com/repos/llvm/llvm-project/releases",
+        "mode": "json_api",
+        "titlePaths": ["name", "tag_name"],
+        "urlTemplate": "{raw:html_url}",
+        "summaryPaths": ["body"],
+        "publishedAtPath": "published_at",
+        "externalIdPath": "id",
+        "_aihot": { "initialBackfillLimit": 12 }
+      },
+      "tier": "T1",
+      "owner_entity_id": "llvm",
+      "participation_mode": "editorial",
+      "interval_minutes": 120,
+      "tags": ["GitHub", "版本"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "json-github-pytorch-releases",
+      "name": "GitHub · pytorch/pytorch Releases",
+      "kind": "json_list",
+      "config": {
+        "url": "https://api.github.com/repos/pytorch/pytorch/releases",
+        "mode": "json_api",
+        "titlePaths": ["name", "tag_name"],
+        "urlTemplate": "{raw:html_url}",
+        "summaryPaths": ["body"],
+        "publishedAtPath": "published_at",
+        "externalIdPath": "id",
+        "_aihot": { "initialBackfillLimit": 12 }
+      },
+      "tier": "T1",
+      "owner_entity_id": "pytorch",
+      "participation_mode": "editorial",
+      "interval_minutes": 120,
+      "tags": ["GitHub", "版本"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "json-github-tvm-releases",
+      "name": "GitHub · apache/tvm Releases",
+      "kind": "json_list",
+      "config": {
+        "url": "https://api.github.com/repos/apache/tvm/releases",
+        "mode": "json_api",
+        "titlePaths": ["name", "tag_name"],
+        "urlTemplate": "{raw:html_url}",
+        "summaryPaths": ["body"],
+        "publishedAtPath": "published_at",
+        "externalIdPath": "id",
+        "_aihot": { "initialBackfillLimit": 12 }
+      },
+      "tier": "T1",
+      "owner_entity_id": "apache-tvm",
+      "participation_mode": "editorial",
+      "interval_minutes": 180,
+      "tags": ["GitHub", "版本"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-github-llvm-releases",
+      "name": "GitHub · llvm/llvm-project Releases 页面",
+      "kind": "web_list",
+      "config": {
+        "url": "https://github.com/llvm/llvm-project/releases",
+        "parseMode": "html",
+        "itemSelector": "section[aria-labelledby]",
+        "linkSelector": "a[href*='/releases/tag/']",
+        "titleSelector": "a[href*='/releases/tag/']",
+        "publishedAtSelector": "relative-time",
+        "allowUrlPrefixes": ["https://github.com/llvm/llvm-project/releases/tag/"]
+      },
+      "tier": "T1",
+      "owner_entity_id": "llvm",
+      "participation_mode": "hot_signal",
+      "interval_minutes": 180,
+      "tags": ["GitHub", "网页列表"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "x-nvidia-developer",
+      "name": "X：NVIDIA Developer (@NVIDIA)",
+      "kind": "x_search",
+      "config": { "query": "from:NVIDIA -filter:replies", "searchType": "Latest" },
+      "tier": "T1_5",
+      "owner_entity_id": "nvidia",
+      "participation_mode": "hot_signal",
+      "interval_minutes": 120,
+      "tags": ["X", "官方"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "x-llvm-project",
+      "name": "X：LLVM Project (@llvmproject)",
+      "kind": "x_search",
+      "config": { "query": "from:llvmproject -filter:replies", "searchType": "Latest" },
+      "tier": "T1_5",
+      "owner_entity_id": "llvm",
+      "participation_mode": "hot_signal",
+      "interval_minutes": 180,
+      "tags": ["X", "官方"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "x-pytorch",
+      "name": "X：PyTorch (@PyTorch)",
+      "kind": "x_search",
+      "config": { "query": "from:PyTorch -filter:replies", "searchType": "Latest" },
+      "tier": "T1_5",
+      "owner_entity_id": "pytorch",
+      "participation_mode": "hot_signal",
+      "interval_minutes": 180,
+      "tags": ["X", "官方"],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "x-compiler-engineers",
+      "name": "X：编译器与系统工程师",
+      "kind": "x_search",
+      "config": { "query": "(compiler OR LLVM OR MLIR OR CUDA OR ROCm OR XLA) -filter:replies lang:en", "searchType": "Latest" },
+      "tier": "T2",
+      "owner_entity_id": null,
+      "participation_mode": "hot_signal",
+      "interval_minutes": 180,
+      "tags": ["X", "技术讨论"],
       "site_fulltext": false,
       "syndicate_fulltext": false
     }
