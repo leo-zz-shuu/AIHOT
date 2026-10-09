@@ -68,6 +68,8 @@ export interface AgentAbility {
     use: string;
     description: string;
     input: z.ZodObject;
+    /** Optional successful empty-site call for scripts/mcp-check.ts; without it, only inputs accepting {} are called. */
+    checkArgs?: Record<string, unknown>;
     /** The text (the same answer) and the structured content. */
     run: (args: Record<string, unknown>) => Promise<{ text: string; structured: Record<string, unknown> }>;
   };
@@ -114,6 +116,8 @@ export function defineQueue<T>(queue: ModuleQueue<T>): ModuleQueue<T> {
 
 export interface SitemapEntry {
   loc: string;
+  /** Stable public-content identity for update notifications; never rendered into the sitemap. */
+  revision?: string;
   lastmod?: Date | null;
   changefreq?: string;
   priority?: number;
@@ -195,6 +199,8 @@ export interface RequestNotices {
 export interface ServerModule {
   /** Its folder under modules/. */
   name: string;
+  /** Sources whose selected articles keep independent cards/seats without changing admission or event identity (publication/rules.ts, scope.ts). */
+  independentSelectedSources?: readonly string[];
   /** Its HTTP routes, and hooks on the app such as what to flush when it closes, registered before the engine's v1 fallbacks (apps/api/src/app.ts). */
   http?: (app: FastifyInstance) => void;
   agent?: {
@@ -212,6 +218,8 @@ export interface ServerModule {
     entries?: () => Promise<SitemapEntry[]>;
   };
   admin?: {
+    /** Current jobs scheduled outside the worker, by their job_runs name (admin/runs.ts). */
+    currentJobs?: () => Promise<readonly string[]>;
     /** Badges on the admin navigation, by the key its web items name (admin/navigation.ts). */
     counts?: Record<string, () => Promise<number>>;
     /** Its part of the admin's runs page, under its name (admin/runs.ts); its web module draws it. */
